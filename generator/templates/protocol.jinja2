@@ -1,0 +1,34 @@
+# {{ name }}
+
+## Overview
+
+**Protocol URI:** `{{ identifier }}`
+
+{{ description }}
+
+### Protocol Messages
+{% for message in messages -%}
+- [{{ message.name }}](#{{message.name}})
+{% endfor %}
+
+## Message Definitions
+{%- for message in messages %}
+
+### {{ message.name }}
+
+{{ message.description }}
+
+{% if message.example -%}
+Example:
+
+```json
+{{ message.example }}
+```
+
+{% endif -%}
+#### Fields
+{%- for field in message.fields %}
+
+`{{ field.key }}` ({{ field.type }}{%- if not field.required -%}; Optional{%- endif -%}): {{ field.description }}
+{%- endfor %}
+{%- endfor -%}
