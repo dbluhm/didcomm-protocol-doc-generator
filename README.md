@@ -6,6 +6,17 @@ this tool to remove a portion of the work.
 
 This tool accepts a JSON or YAML structure and generates a Markdown Document.
 
+## Usage
+
+```sh
+$ python -m venv env
+$ source env/bin/activate
+$ pip install -e .
+$ python -m generator < input.yml > output.md
+```
+
+## Input
+
 The JSON/YAML should look like:
 ```json
 {
