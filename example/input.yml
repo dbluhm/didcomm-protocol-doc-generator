@@ -1,0 +1,966 @@
+protocols:
+- title: Holder Admin Protocol
+  name: admin-holder
+  version: '0.1'
+  identifier: did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/admin-holder/0.1
+  description: Define messages for credential holder admin protocols.
+  messages:
+  - type: did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/admin-holder/0.1/credentials-get-list
+    name: credentials-get-list
+    description: Credential list retrieval message.
+    example: "{\n  \"@type\": \"did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/admin-holder/0.1/credentials-get-list\"\
+      ,\n  \"@id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"~paginate\": {\n\
+      \    \"limit\": null,\n    \"offset\": null\n  }\n}"
+    fields:
+    - key: '@type'
+      type: String
+      required: true
+      description: Message type
+      example: https://didcomm.org/my-family/1.0/my-message-type
+    - key: '@id'
+      type: String
+      required: false
+      description: Message identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: ~paginate
+      type: Nested
+      required: false
+      description: Fields of paginate decorator.
+      example: "{\n  \"limit\": null,\n  \"offset\": null\n}"
+  - type: did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/admin-holder/0.1/credentials-list
+    name: credentials-list
+    description: Credential list message.
+    example: "{\n  \"@type\": \"did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/admin-holder/0.1/credentials-list\"\
+      ,\n  \"@id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"results\": null,\n\
+      \  \"~page\": {\n    \"count\": null,\n    \"offset\": null,\n    \"remaining\"\
+      : null\n  }\n}"
+    fields:
+    - key: '@type'
+      type: String
+      required: true
+      description: Message type
+      example: https://didcomm.org/my-family/1.0/my-message-type
+    - key: '@id'
+      type: String
+      required: false
+      description: Message identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: results
+      type: List
+      required: false
+    - key: ~page
+      type: Nested
+      required: false
+      description: Fields of page decorator.
+      example: "{\n  \"count\": null,\n  \"offset\": null,\n  \"remaining\": null\n\
+        }"
+  - type: did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/admin-holder/0.1/credential-offer-accept
+    name: credential-offer-accept
+    description: Credential offer accept message.
+    example: "{\n  \"@type\": \"did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/admin-holder/0.1/credential-offer-accept\"\
+      ,\n  \"@id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"credential_exchange_id\"\
+      : null\n}"
+    fields:
+    - key: '@type'
+      type: String
+      required: true
+      description: Message type
+      example: https://didcomm.org/my-family/1.0/my-message-type
+    - key: '@id'
+      type: String
+      required: false
+      description: Message identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: credential_exchange_id
+      type: String
+      required: true
+  - type: did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/admin-holder/0.1/credential-offer-received
+    name: credential-offer-received
+    description: Credential offer received message.
+    example: "{\n  \"@type\": \"did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/admin-holder/0.1/credential-offer-received\"\
+      ,\n  \"@id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"state\": \"credential_acked\"\
+      ,\n  \"created_at\": \"2021-03-05 00:25:27Z\",\n  \"updated_at\": \"2021-03-05\
+      \ 00:25:27Z\",\n  \"trace\": null,\n  \"credential_exchange_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\
+      ,\n  \"connection_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"thread_id\"\
+      : \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"parent_thread_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\
+      ,\n  \"initiator\": \"self\",\n  \"role\": \"issuer\",\n  \"credential_definition_id\"\
+      : \"WgWxqztrNooG92RXvxSTWv:3:CL:20:tag\",\n  \"schema_id\": \"WgWxqztrNooG92RXvxSTWv:2:schema_name:1.0\"\
+      ,\n  \"credential_proposal_dict\": null,\n  \"credential_offer_dict\": null,\n\
+      \  \"credential_offer\": null,\n  \"credential_request\": null,\n  \"credential_request_metadata\"\
+      : null,\n  \"credential_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"\
+      raw_credential\": null,\n  \"credential\": null,\n  \"auto_offer\": false,\n\
+      \  \"auto_issue\": false,\n  \"auto_remove\": false,\n  \"error_msg\": \"credential\
+      \ definition identifier is not set in proposal\",\n  \"revoc_reg_id\": null,\n\
+      \  \"revocation_id\": null\n}"
+    fields:
+    - key: '@type'
+      type: String
+      required: true
+      description: Message type
+      example: https://didcomm.org/my-family/1.0/my-message-type
+    - key: '@id'
+      type: String
+      required: false
+      description: Message identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: state
+      type: String
+      required: false
+      description: Issue-credential exchange state
+      example: credential_acked
+    - key: created_at
+      type: String
+      required: false
+      description: Time of record creation
+      example: '2021-03-05 00:25:27Z'
+    - key: updated_at
+      type: String
+      required: false
+      description: Time of last record update
+      example: '2021-03-05 00:25:27Z'
+    - key: trace
+      type: Boolean
+      required: false
+      description: Record trace information, based on agent configuration
+    - key: credential_exchange_id
+      type: String
+      required: false
+      description: Credential exchange identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: connection_id
+      type: String
+      required: false
+      description: Connection identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: thread_id
+      type: String
+      required: false
+      description: Thread identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: parent_thread_id
+      type: String
+      required: false
+      description: Parent thread identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: initiator
+      type: String
+      required: false
+      description: 'Issue-credential exchange initiator: self or external'
+      example: self
+    - key: role
+      type: String
+      required: false
+      description: 'Issue-credential exchange role: holder or issuer'
+      example: issuer
+    - key: credential_definition_id
+      type: String
+      required: false
+      description: Credential definition identifier
+      example: WgWxqztrNooG92RXvxSTWv:3:CL:20:tag
+    - key: schema_id
+      type: String
+      required: false
+      description: Schema identifier
+      example: WgWxqztrNooG92RXvxSTWv:2:schema_name:1.0
+    - key: credential_proposal_dict
+      type: Dict
+      required: false
+      description: Serialized credential proposal message
+    - key: credential_offer_dict
+      type: Dict
+      required: false
+      description: Serialized credential offer message
+    - key: credential_offer
+      type: Dict
+      required: false
+      description: (Indy) credential offer
+    - key: credential_request
+      type: Dict
+      required: false
+      description: (Indy) credential request
+    - key: credential_request_metadata
+      type: Dict
+      required: false
+      description: (Indy) credential request metadata
+    - key: credential_id
+      type: String
+      required: false
+      description: Credential identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: raw_credential
+      type: Dict
+      required: false
+      description: Credential as received, prior to storage in holder wallet
+    - key: credential
+      type: Dict
+      required: false
+      description: Credential as stored
+    - key: auto_offer
+      type: Boolean
+      required: false
+      description: Holder choice to accept offer in this credential exchange
+    - key: auto_issue
+      type: Boolean
+      required: false
+      description: Issuer choice to issue to request in this credential exchange
+    - key: auto_remove
+      type: Boolean
+      required: false
+      description: Issuer choice to remove this credential exchange record when complete
+    - key: error_msg
+      type: String
+      required: false
+      description: Error message
+      example: credential definition identifier is not set in proposal
+    - key: revoc_reg_id
+      type: String
+      required: false
+      description: Revocation registry identifier
+    - key: revocation_id
+      type: String
+      required: false
+      description: Credential identifier within revocation registry
+  - type: did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/admin-holder/0.1/credential-request-sent
+    name: credential-request-sent
+    description: Credential offer acceptance received and credential request sent.
+    example: "{\n  \"@type\": \"did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/admin-holder/0.1/credential-request-sent\"\
+      ,\n  \"@id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"state\": \"credential_acked\"\
+      ,\n  \"created_at\": \"2021-03-05 00:25:27Z\",\n  \"updated_at\": \"2021-03-05\
+      \ 00:25:27Z\",\n  \"trace\": null,\n  \"credential_exchange_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\
+      ,\n  \"connection_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"thread_id\"\
+      : \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"parent_thread_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\
+      ,\n  \"initiator\": \"self\",\n  \"role\": \"issuer\",\n  \"credential_definition_id\"\
+      : \"WgWxqztrNooG92RXvxSTWv:3:CL:20:tag\",\n  \"schema_id\": \"WgWxqztrNooG92RXvxSTWv:2:schema_name:1.0\"\
+      ,\n  \"credential_proposal_dict\": null,\n  \"credential_offer_dict\": null,\n\
+      \  \"credential_offer\": null,\n  \"credential_request\": null,\n  \"credential_request_metadata\"\
+      : null,\n  \"credential_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"\
+      raw_credential\": null,\n  \"credential\": null,\n  \"auto_offer\": false,\n\
+      \  \"auto_issue\": false,\n  \"auto_remove\": false,\n  \"error_msg\": \"credential\
+      \ definition identifier is not set in proposal\",\n  \"revoc_reg_id\": null,\n\
+      \  \"revocation_id\": null\n}"
+    fields:
+    - key: '@type'
+      type: String
+      required: true
+      description: Message type
+      example: https://didcomm.org/my-family/1.0/my-message-type
+    - key: '@id'
+      type: String
+      required: false
+      description: Message identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: state
+      type: String
+      required: false
+      description: Issue-credential exchange state
+      example: credential_acked
+    - key: created_at
+      type: String
+      required: false
+      description: Time of record creation
+      example: '2021-03-05 00:25:27Z'
+    - key: updated_at
+      type: String
+      required: false
+      description: Time of last record update
+      example: '2021-03-05 00:25:27Z'
+    - key: trace
+      type: Boolean
+      required: false
+      description: Record trace information, based on agent configuration
+    - key: credential_exchange_id
+      type: String
+      required: false
+      description: Credential exchange identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: connection_id
+      type: String
+      required: false
+      description: Connection identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: thread_id
+      type: String
+      required: false
+      description: Thread identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: parent_thread_id
+      type: String
+      required: false
+      description: Parent thread identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: initiator
+      type: String
+      required: false
+      description: 'Issue-credential exchange initiator: self or external'
+      example: self
+    - key: role
+      type: String
+      required: false
+      description: 'Issue-credential exchange role: holder or issuer'
+      example: issuer
+    - key: credential_definition_id
+      type: String
+      required: false
+      description: Credential definition identifier
+      example: WgWxqztrNooG92RXvxSTWv:3:CL:20:tag
+    - key: schema_id
+      type: String
+      required: false
+      description: Schema identifier
+      example: WgWxqztrNooG92RXvxSTWv:2:schema_name:1.0
+    - key: credential_proposal_dict
+      type: Dict
+      required: false
+      description: Serialized credential proposal message
+    - key: credential_offer_dict
+      type: Dict
+      required: false
+      description: Serialized credential offer message
+    - key: credential_offer
+      type: Dict
+      required: false
+      description: (Indy) credential offer
+    - key: credential_request
+      type: Dict
+      required: false
+      description: (Indy) credential request
+    - key: credential_request_metadata
+      type: Dict
+      required: false
+      description: (Indy) credential request metadata
+    - key: credential_id
+      type: String
+      required: false
+      description: Credential identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: raw_credential
+      type: Dict
+      required: false
+      description: Credential as received, prior to storage in holder wallet
+    - key: credential
+      type: Dict
+      required: false
+      description: Credential as stored
+    - key: auto_offer
+      type: Boolean
+      required: false
+      description: Holder choice to accept offer in this credential exchange
+    - key: auto_issue
+      type: Boolean
+      required: false
+      description: Issuer choice to issue to request in this credential exchange
+    - key: auto_remove
+      type: Boolean
+      required: false
+      description: Issuer choice to remove this credential exchange record when complete
+    - key: error_msg
+      type: String
+      required: false
+      description: Error message
+      example: credential definition identifier is not set in proposal
+    - key: revoc_reg_id
+      type: String
+      required: false
+      description: Revocation registry identifier
+    - key: revocation_id
+      type: String
+      required: false
+      description: Credential identifier within revocation registry
+  - type: did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/admin-holder/0.1/credential-received
+    name: credential-received
+    description: Credential received notification message.
+    example: "{\n  \"@type\": \"did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/admin-holder/0.1/credential-received\"\
+      ,\n  \"@id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"state\": \"credential_acked\"\
+      ,\n  \"created_at\": \"2021-03-05 00:25:27Z\",\n  \"updated_at\": \"2021-03-05\
+      \ 00:25:27Z\",\n  \"trace\": null,\n  \"credential_exchange_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\
+      ,\n  \"connection_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"thread_id\"\
+      : \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"parent_thread_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\
+      ,\n  \"initiator\": \"self\",\n  \"role\": \"issuer\",\n  \"credential_definition_id\"\
+      : \"WgWxqztrNooG92RXvxSTWv:3:CL:20:tag\",\n  \"schema_id\": \"WgWxqztrNooG92RXvxSTWv:2:schema_name:1.0\"\
+      ,\n  \"credential_proposal_dict\": null,\n  \"credential_offer_dict\": null,\n\
+      \  \"credential_offer\": null,\n  \"credential_request\": null,\n  \"credential_request_metadata\"\
+      : null,\n  \"credential_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"\
+      raw_credential\": null,\n  \"credential\": null,\n  \"auto_offer\": false,\n\
+      \  \"auto_issue\": false,\n  \"auto_remove\": false,\n  \"error_msg\": \"credential\
+      \ definition identifier is not set in proposal\",\n  \"revoc_reg_id\": null,\n\
+      \  \"revocation_id\": null\n}"
+    fields:
+    - key: '@type'
+      type: String
+      required: true
+      description: Message type
+      example: https://didcomm.org/my-family/1.0/my-message-type
+    - key: '@id'
+      type: String
+      required: false
+      description: Message identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: state
+      type: String
+      required: false
+      description: Issue-credential exchange state
+      example: credential_acked
+    - key: created_at
+      type: String
+      required: false
+      description: Time of record creation
+      example: '2021-03-05 00:25:27Z'
+    - key: updated_at
+      type: String
+      required: false
+      description: Time of last record update
+      example: '2021-03-05 00:25:27Z'
+    - key: trace
+      type: Boolean
+      required: false
+      description: Record trace information, based on agent configuration
+    - key: credential_exchange_id
+      type: String
+      required: false
+      description: Credential exchange identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: connection_id
+      type: String
+      required: false
+      description: Connection identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: thread_id
+      type: String
+      required: false
+      description: Thread identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: parent_thread_id
+      type: String
+      required: false
+      description: Parent thread identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: initiator
+      type: String
+      required: false
+      description: 'Issue-credential exchange initiator: self or external'
+      example: self
+    - key: role
+      type: String
+      required: false
+      description: 'Issue-credential exchange role: holder or issuer'
+      example: issuer
+    - key: credential_definition_id
+      type: String
+      required: false
+      description: Credential definition identifier
+      example: WgWxqztrNooG92RXvxSTWv:3:CL:20:tag
+    - key: schema_id
+      type: String
+      required: false
+      description: Schema identifier
+      example: WgWxqztrNooG92RXvxSTWv:2:schema_name:1.0
+    - key: credential_proposal_dict
+      type: Dict
+      required: false
+      description: Serialized credential proposal message
+    - key: credential_offer_dict
+      type: Dict
+      required: false
+      description: Serialized credential offer message
+    - key: credential_offer
+      type: Dict
+      required: false
+      description: (Indy) credential offer
+    - key: credential_request
+      type: Dict
+      required: false
+      description: (Indy) credential request
+    - key: credential_request_metadata
+      type: Dict
+      required: false
+      description: (Indy) credential request metadata
+    - key: credential_id
+      type: String
+      required: false
+      description: Credential identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: raw_credential
+      type: Dict
+      required: false
+      description: Credential as received, prior to storage in holder wallet
+    - key: credential
+      type: Dict
+      required: false
+      description: Credential as stored
+    - key: auto_offer
+      type: Boolean
+      required: false
+      description: Holder choice to accept offer in this credential exchange
+    - key: auto_issue
+      type: Boolean
+      required: false
+      description: Issuer choice to issue to request in this credential exchange
+    - key: auto_remove
+      type: Boolean
+      required: false
+      description: Issuer choice to remove this credential exchange record when complete
+    - key: error_msg
+      type: String
+      required: false
+      description: Error message
+      example: credential definition identifier is not set in proposal
+    - key: revoc_reg_id
+      type: String
+      required: false
+      description: Revocation registry identifier
+    - key: revocation_id
+      type: String
+      required: false
+      description: Credential identifier within revocation registry
+  - type: did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/admin-holder/0.1/send-credential-proposal
+    name: send-credential-proposal
+    description: Send Credential Proposal Message.
+    example: "{\n  \"@type\": \"did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/admin-holder/0.1/send-credential-proposal\"\
+      ,\n  \"@id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"trace\": false,\n\
+      \  \"connection_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"cred_def_id\"\
+      : \"WgWxqztrNooG92RXvxSTWv:3:CL:20:tag\",\n  \"schema_id\": \"WgWxqztrNooG92RXvxSTWv:2:schema_name:1.0\"\
+      ,\n  \"schema_issuer_did\": \"WgWxqztrNooG92RXvxSTWv\",\n  \"schema_name\":\
+      \ \"preferences\",\n  \"schema_version\": \"1.0\",\n  \"issuer_did\": \"WgWxqztrNooG92RXvxSTWv\"\
+      ,\n  \"auto_remove\": null,\n  \"comment\": null,\n  \"credential_proposal\"\
+      : {\n    \"@type\": \"issue-credential/1.0/credential-preview\",\n    \"attributes\"\
+      : {\n      \"name\": \"favourite_drink\",\n      \"mime-type\": \"image/jpeg\"\
+      ,\n      \"value\": \"martini\"\n    }\n  }\n}"
+    fields:
+    - key: '@type'
+      type: String
+      required: true
+      description: Message type
+      example: https://didcomm.org/my-family/1.0/my-message-type
+    - key: '@id'
+      type: String
+      required: false
+      description: Message identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: trace
+      type: Boolean
+      required: false
+      description: Whether to trace event (default false)
+    - key: connection_id
+      type: UUID
+      required: true
+      description: Connection identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: cred_def_id
+      type: String
+      required: false
+      description: Credential definition identifier
+      example: WgWxqztrNooG92RXvxSTWv:3:CL:20:tag
+    - key: schema_id
+      type: String
+      required: false
+      description: Schema identifier
+      example: WgWxqztrNooG92RXvxSTWv:2:schema_name:1.0
+    - key: schema_issuer_did
+      type: String
+      required: false
+      description: Schema issuer DID
+      example: WgWxqztrNooG92RXvxSTWv
+    - key: schema_name
+      type: String
+      required: false
+      description: Schema name
+      example: preferences
+    - key: schema_version
+      type: String
+      required: false
+      description: Schema version
+      example: '1.0'
+    - key: issuer_did
+      type: String
+      required: false
+      description: Credential issuer DID
+      example: WgWxqztrNooG92RXvxSTWv
+    - key: auto_remove
+      type: Boolean
+      required: false
+      description: Whether to remove the credential exchange record on completion
+        (overrides --preserve-exchange-records configuration setting)
+    - key: comment
+      type: String
+      required: false
+      description: Human-readable comment
+    - key: credential_proposal
+      type: Nested
+      required: true
+      description: Credential preview schema.
+      example: "{\n  \"@type\": \"issue-credential/1.0/credential-preview\",\n  \"\
+        attributes\": {\n    \"name\": \"favourite_drink\",\n    \"mime-type\": \"\
+        image/jpeg\",\n    \"value\": \"martini\"\n  }\n}"
+  - type: did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/admin-holder/0.1/credential-exchange
+    name: credential-exchange
+    description: Credential exchange message.
+    example: "{\n  \"@type\": \"did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/admin-holder/0.1/credential-exchange\"\
+      ,\n  \"@id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"state\": \"credential_acked\"\
+      ,\n  \"created_at\": \"2021-03-05 00:25:27Z\",\n  \"updated_at\": \"2021-03-05\
+      \ 00:25:27Z\",\n  \"trace\": null,\n  \"credential_exchange_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\
+      ,\n  \"connection_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"thread_id\"\
+      : \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"parent_thread_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\
+      ,\n  \"initiator\": \"self\",\n  \"role\": \"issuer\",\n  \"credential_definition_id\"\
+      : \"WgWxqztrNooG92RXvxSTWv:3:CL:20:tag\",\n  \"schema_id\": \"WgWxqztrNooG92RXvxSTWv:2:schema_name:1.0\"\
+      ,\n  \"credential_proposal_dict\": null,\n  \"credential_offer_dict\": null,\n\
+      \  \"credential_offer\": null,\n  \"credential_request\": null,\n  \"credential_request_metadata\"\
+      : null,\n  \"credential_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"\
+      raw_credential\": null,\n  \"credential\": null,\n  \"auto_offer\": false,\n\
+      \  \"auto_issue\": false,\n  \"auto_remove\": false,\n  \"error_msg\": \"credential\
+      \ definition identifier is not set in proposal\",\n  \"revoc_reg_id\": null,\n\
+      \  \"revocation_id\": null\n}"
+    fields:
+    - key: '@type'
+      type: String
+      required: true
+      description: Message type
+      example: https://didcomm.org/my-family/1.0/my-message-type
+    - key: '@id'
+      type: String
+      required: false
+      description: Message identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: state
+      type: String
+      required: false
+      description: Issue-credential exchange state
+      example: credential_acked
+    - key: created_at
+      type: String
+      required: false
+      description: Time of record creation
+      example: '2021-03-05 00:25:27Z'
+    - key: updated_at
+      type: String
+      required: false
+      description: Time of last record update
+      example: '2021-03-05 00:25:27Z'
+    - key: trace
+      type: Boolean
+      required: false
+      description: Record trace information, based on agent configuration
+    - key: credential_exchange_id
+      type: String
+      required: false
+      description: Credential exchange identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: connection_id
+      type: String
+      required: false
+      description: Connection identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: thread_id
+      type: String
+      required: false
+      description: Thread identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: parent_thread_id
+      type: String
+      required: false
+      description: Parent thread identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: initiator
+      type: String
+      required: false
+      description: 'Issue-credential exchange initiator: self or external'
+      example: self
+    - key: role
+      type: String
+      required: false
+      description: 'Issue-credential exchange role: holder or issuer'
+      example: issuer
+    - key: credential_definition_id
+      type: String
+      required: false
+      description: Credential definition identifier
+      example: WgWxqztrNooG92RXvxSTWv:3:CL:20:tag
+    - key: schema_id
+      type: String
+      required: false
+      description: Schema identifier
+      example: WgWxqztrNooG92RXvxSTWv:2:schema_name:1.0
+    - key: credential_proposal_dict
+      type: Dict
+      required: false
+      description: Serialized credential proposal message
+    - key: credential_offer_dict
+      type: Dict
+      required: false
+      description: Serialized credential offer message
+    - key: credential_offer
+      type: Dict
+      required: false
+      description: (Indy) credential offer
+    - key: credential_request
+      type: Dict
+      required: false
+      description: (Indy) credential request
+    - key: credential_request_metadata
+      type: Dict
+      required: false
+      description: (Indy) credential request metadata
+    - key: credential_id
+      type: String
+      required: false
+      description: Credential identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: raw_credential
+      type: Dict
+      required: false
+      description: Credential as received, prior to storage in holder wallet
+    - key: credential
+      type: Dict
+      required: false
+      description: Credential as stored
+    - key: auto_offer
+      type: Boolean
+      required: false
+      description: Holder choice to accept offer in this credential exchange
+    - key: auto_issue
+      type: Boolean
+      required: false
+      description: Issuer choice to issue to request in this credential exchange
+    - key: auto_remove
+      type: Boolean
+      required: false
+      description: Issuer choice to remove this credential exchange record when complete
+    - key: error_msg
+      type: String
+      required: false
+      description: Error message
+      example: credential definition identifier is not set in proposal
+    - key: revoc_reg_id
+      type: String
+      required: false
+      description: Revocation registry identifier
+    - key: revocation_id
+      type: String
+      required: false
+      description: Credential identifier within revocation registry
+  - type: did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/admin-holder/0.1/presentations-get-list
+    name: presentations-get-list
+    description: Presentation get list message.
+    example: "{\n  \"@type\": \"did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/admin-holder/0.1/presentations-get-list\"\
+      ,\n  \"@id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"connection_id\"\
+      : null,\n  \"verified\": null,\n  \"~paginate\": {\n    \"limit\": null,\n \
+      \   \"offset\": null\n  }\n}"
+    fields:
+    - key: '@type'
+      type: String
+      required: true
+      description: Message type
+      example: https://didcomm.org/my-family/1.0/my-message-type
+    - key: '@id'
+      type: String
+      required: false
+      description: Message identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: connection_id
+      type: String
+      required: false
+    - key: verified
+      type: String
+      required: false
+    - key: ~paginate
+      type: Nested
+      required: false
+      description: Fields of paginate decorator.
+      example: "{\n  \"limit\": null,\n  \"offset\": null\n}"
+  - type: did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/admin-holder/0.1/presentations-list
+    name: presentations-list
+    description: Presentation get list response message.
+    example: "{\n  \"@type\": \"did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/admin-holder/0.1/presentations-list\"\
+      ,\n  \"@id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"results\": null,\n\
+      \  \"~page\": {\n    \"count\": null,\n    \"offset\": null,\n    \"remaining\"\
+      : null\n  }\n}"
+    fields:
+    - key: '@type'
+      type: String
+      required: true
+      description: Message type
+      example: https://didcomm.org/my-family/1.0/my-message-type
+    - key: '@id'
+      type: String
+      required: false
+      description: Message identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: results
+      type: List
+      required: false
+    - key: ~page
+      type: Nested
+      required: false
+      description: Fields of page decorator.
+      example: "{\n  \"count\": null,\n  \"offset\": null,\n  \"remaining\": null\n\
+        }"
+  - type: did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/admin-holder/0.1/presentation-request-approve
+    name: presentation-request-approve
+    description: Approve presentation request.
+    example: "{\n  \"@type\": \"did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/admin-holder/0.1/presentation-request-approve\"\
+      ,\n  \"@id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"presentation_exchange_id\"\
+      : null\n}"
+    fields:
+    - key: '@type'
+      type: String
+      required: true
+      description: Message type
+      example: https://didcomm.org/my-family/1.0/my-message-type
+    - key: '@id'
+      type: String
+      required: false
+      description: Message identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: presentation_exchange_id
+      type: String
+      required: true
+  - type: did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/admin-holder/0.1/send-presentation-proposal
+    name: send-presentation-proposal
+    description: Presentation proposal message.
+    example: "{\n  \"@type\": \"did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/admin-holder/0.1/send-presentation-proposal\"\
+      ,\n  \"@id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"trace\": false,\n\
+      \  \"connection_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"comment\"\
+      : null,\n  \"presentation_proposal\": {\n    \"@type\": \"did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/present-proof/1.0/presentation-preview\"\
+      ,\n    \"attributes\": {\n      \"name\": \"favourite_drink\",\n      \"cred_def_id\"\
+      : \"WgWxqztrNooG92RXvxSTWv:3:CL:20:tag\",\n      \"mime-type\": \"image/jpeg\"\
+      ,\n      \"value\": \"martini\",\n      \"referent\": \"0\"\n    },\n    \"\
+      predicates\": {\n      \"name\": \"high_score\",\n      \"cred_def_id\": \"\
+      WgWxqztrNooG92RXvxSTWv:3:CL:20:tag\",\n      \"predicate\": \">=\",\n      \"\
+      threshold\": null\n    }\n  },\n  \"auto_present\": null\n}"
+    fields:
+    - key: '@type'
+      type: String
+      required: true
+      description: Message type
+      example: https://didcomm.org/my-family/1.0/my-message-type
+    - key: '@id'
+      type: String
+      required: false
+      description: Message identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: trace
+      type: Boolean
+      required: false
+      description: Whether to trace event (default false)
+    - key: connection_id
+      type: UUID
+      required: true
+      description: Connection identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: comment
+      type: String
+      required: false
+      description: Human-readable comment
+    - key: presentation_proposal
+      type: Nested
+      required: true
+      description: Presentation preview schema.
+      example: "{\n  \"@type\": \"did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/present-proof/1.0/presentation-preview\"\
+        ,\n  \"attributes\": {\n    \"name\": \"favourite_drink\",\n    \"cred_def_id\"\
+        : \"WgWxqztrNooG92RXvxSTWv:3:CL:20:tag\",\n    \"mime-type\": \"image/jpeg\"\
+        ,\n    \"value\": \"martini\",\n    \"referent\": \"0\"\n  },\n  \"predicates\"\
+        : {\n    \"name\": \"high_score\",\n    \"cred_def_id\": \"WgWxqztrNooG92RXvxSTWv:3:CL:20:tag\"\
+        ,\n    \"predicate\": \">=\",\n    \"threshold\": null\n  }\n}"
+    - key: auto_present
+      type: Boolean
+      required: false
+      description: Whether to respond automatically to presentation requests, building
+        and presenting requested proof
+  - type: did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/admin-holder/0.1/presentation-exchange
+    name: presentation-exchange
+    description: Presentation Exchange message.
+    example: "{\n  \"@type\": \"did:sov:BzCbsNYhMrjHiqZDTUASHg;spec/admin-holder/0.1/presentation-exchange\"\
+      ,\n  \"@id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"state\": \"verified\"\
+      ,\n  \"created_at\": \"2021-03-05 00:25:27Z\",\n  \"updated_at\": \"2021-03-05\
+      \ 00:25:27Z\",\n  \"trace\": null,\n  \"presentation_exchange_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\
+      ,\n  \"connection_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"thread_id\"\
+      : \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"initiator\": \"self\",\n  \"\
+      role\": \"prover\",\n  \"presentation_proposal_dict\": null,\n  \"presentation_request\"\
+      : null,\n  \"presentation_request_dict\": null,\n  \"presentation\": null,\n\
+      \  \"verified\": \"true\",\n  \"auto_present\": false,\n  \"error_msg\": \"\
+      Invalid structure\"\n}"
+    fields:
+    - key: '@type'
+      type: String
+      required: true
+      description: Message type
+      example: https://didcomm.org/my-family/1.0/my-message-type
+    - key: '@id'
+      type: String
+      required: false
+      description: Message identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: state
+      type: String
+      required: false
+      description: Present-proof exchange state
+      example: verified
+    - key: created_at
+      type: String
+      required: false
+      description: Time of record creation
+      example: '2021-03-05 00:25:27Z'
+    - key: updated_at
+      type: String
+      required: false
+      description: Time of last record update
+      example: '2021-03-05 00:25:27Z'
+    - key: trace
+      type: Boolean
+      required: false
+      description: Record trace information, based on agent configuration
+    - key: presentation_exchange_id
+      type: String
+      required: false
+      description: Presentation exchange identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: connection_id
+      type: String
+      required: false
+      description: Connection identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: thread_id
+      type: String
+      required: false
+      description: Thread identifier
+      example: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+    - key: initiator
+      type: String
+      required: false
+      description: 'Present-proof exchange initiator: self or external'
+      example: self
+    - key: role
+      type: String
+      required: false
+      description: 'Present-proof exchange role: prover or verifier'
+      example: prover
+    - key: presentation_proposal_dict
+      type: Dict
+      required: false
+      description: Serialized presentation proposal message
+    - key: presentation_request
+      type: Dict
+      required: false
+      description: (Indy) presentation request (also known as proof request)
+    - key: presentation_request_dict
+      type: Dict
+      required: false
+      description: Serialized presentation request message
+    - key: presentation
+      type: Dict
+      required: false
+      description: (Indy) presentation (also known as proof)
+    - key: verified
+      type: String
+      required: false
+      description: 'Whether presentation is verified: true or false'
+      example: 'true'
+    - key: auto_present
+      type: Boolean
+      required: false
+      description: Prover choice to auto-present proof as verifier requests
+    - key: error_msg
+      type: String
+      required: false
+      description: Error message
+      example: Invalid structure
+
