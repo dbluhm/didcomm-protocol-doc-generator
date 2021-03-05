@@ -48,3 +48,5 @@ The JSON/YAML should look like:
   ]
 }
 ```
+
+Currently, only the first protocol in the `protocols` list is processed.
